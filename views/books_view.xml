@@ -1,16 +1,23 @@
 <odoo>
+   <!-- Acción para mostrar la lista de libros -->
+    <record id="library_management.book_action" model="ir.actions.act_window">
+        <field name="name">Libros</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
     <!-- Vista de lista para library.book -->
     <record id="view_book_list" model="ir.ui.view">
         <field name="name">library.book.list</field>
         <field name="model">library.book</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="title"/>
                 <field name="isbn"/>
                 <field name="author_id"/>
                 <field name="category_id"/>
                 <field name="available_copies"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -33,24 +40,5 @@
         </field>
     </record>
 
-    <!-- Acción para mostrar la lista de libros -->
-    <record id="action_library_book" model="ir.actions.act_window">
-        <field name="name">Libros</field>
-        <field name="res_model">library.book</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                No hay libros registrados. Crea uno nuevo.
-            </p>
-        </field>
-    </record>
-
-    <!-- Menú principal de la biblioteca -->
-    <menuitem id="menu_library_root" name="Biblioteca"/>
-
-    <!-- Submenú de libros -->
-    <menuitem id="menu_library_book"
-              name="Libros"
-              parent="menu_library_root"
-              action="action_library_book"/>
+ 
 </odoo>

@@ -1,11 +1,11 @@
 <odoo>
-        <!-- Acción para mostrar la lista de usuarios -->
+    <!-- Acción para mostrar la lista de usuarios -->
     <record id="library_management.user_action" model="ir.actions.act_window">
         <field name="name">Usuarios</field>
         <field name="res_model">library.user</field>
         <field name="view_mode">list,form</field>
     </record>
-    
+
     <!-- Vista de lista para library.user -->
     <record id="view_user_list" model="ir.ui.view">
         <field name="name">library.user.list</field>
@@ -39,10 +39,4 @@
     </record>
 
 
-
-    <!-- Submenú de usuarios dentro del menú Biblioteca
-    <menuitem id="menu_library_user"
-              name="Usuarios"
-              parent="library_management_menu"
-              action="library_management.user_action"/> -->
 </odoo>

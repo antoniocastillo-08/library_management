@@ -3,13 +3,9 @@
     <menuitem id="library_management_menu" name="Library Management" sequence="1"/>
 
     <!-- Submenús con sus respectivas acciones -->
-    <menuitem id="library_author_menu" name="Author" parent="library_management_menu" sequence="2" action="library_management.author_action"/>
-    <menuitem id="library_user_menu" name="Users" parent="library_management_menu" sequence="3" action="library_management.user_action"/>
-
-
-    <!-- <menuitem id="library_books_menu" name="Books" parent="library_management_menu" sequence="2" action="action_library_book"/>
-    <menuitem id="library_categories_menu" name="Categories" parent="library_management_menu" sequence="4" action="action_library_category"/>
-    <menuitem id="library_loans_menu" name="Loans" parent="library_management_menu" sequence="6" action="action_library_loan"/>
-     -->
-
+    <menuitem id="library_management_author_menu" name="Author" parent="library_management_menu" action="library_management.author_action" sequence="2"/>
+    <menuitem id="library_management_books_menu" name="Books" parent="library_management_menu" action="library_management.book_action" sequence="3"/> 
+    <menuitem id="library_management_user_menu" name="Users" parent="library_management_menu" action="library_management.user_action" sequence="4"/> 
+    <menuitem id="library_management_loan_menu" name="Loans" parent="library_management_menu" action="library_management.loan_action" sequence="5" /> 
+    <menuitem id="library_management_category_menu" name="Categories" parent="library_management_menu" action="library_management.category_action" sequence="6"/>
 </odoo>
