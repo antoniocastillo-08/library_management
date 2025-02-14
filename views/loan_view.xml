@@ -4,7 +4,7 @@
         <field name="name">Préstamos</field>
         <field name="res_model">library.loan</field>
         <field name="view_mode">list,form</field>
-        </record>
+    </record>
 
     <!-- Vista de lista para library.loan -->
     <record id="view_loan_list" model="ir.ui.view">
@@ -17,6 +17,8 @@
                 <field name="loan_date"/>
                 <field name="return_date"/>
                 <field name="loan_status"/>
+                 <button name="return_book" string="Marcar como Devuelto" type="object"
+                         class="btn-primary hide-when-returned" />
             </list>
         </field>
     </record>
@@ -35,6 +37,7 @@
                         <field name="return_date"/>
                         <field name="loan_status"/>
                     </group>
+                     <button name="return_book" string="Marcar como Devuelto" type="object" class="btn-primary hide-when-returned" />
                 </sheet>
             </form>
         </field>
