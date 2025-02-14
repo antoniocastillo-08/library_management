@@ -8,7 +8,7 @@ class LibraryLoan(models.Model):
     user_id = fields.Many2one('library.user', string='User', required=True)
     book_id = fields.Many2one('library.book', string='Book', required=True)
     loan_date = fields.Date(string='Loan Date', required=True, default=fields.Date.today)
-    return_date = fields.Date(string='Return Date')
+    return_date = fields.Date(string='Return Date', required=True, default=lambda self: fields.Date.today() + timedelta(days=7))
     loan_status = fields.Selection([
         ('ongoing', 'Ongoing'),
         ('returned', 'Returned'),
@@ -25,10 +25,11 @@ class LibraryLoan(models.Model):
         if ongoing_loans >= 3:
             raise exceptions.UserError('User has more than 3 ongoing loans.')
 
-        # Set the return date to 7 days from the loan date
-        vals['return_date'] = fields.Date.to_string(
-            fields.Date.from_string(vals['loan_date']) + timedelta(days=7)
-        )
+        # Set the return date to 7 days from the loan date if not provided
+        if 'return_date' not in vals:
+            vals['return_date'] = fields.Date.to_string(
+                fields.Date.from_string(vals['loan_date']) + timedelta(days=7)
+            )
 
         # Reduce the available copies of the book
         book = self.env['library.book'].browse(vals['book_id'])
