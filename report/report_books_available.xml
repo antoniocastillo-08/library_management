@@ -1,0 +1,14 @@
+<odoo>
+    <template id="report_books_available">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="book">
+                <div class="page">
+                    <h2>Informe de Libros Disponibles</h2>
+                    <p><strong>Título:</strong> <t t-esc="book.title"/></p>
+                    <p><strong>Autor:</strong> <t t-esc="book.author_id.name"/></p>
+                    <p><strong>Copias Disponibles:</strong> <t t-esc="book.available_copies"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

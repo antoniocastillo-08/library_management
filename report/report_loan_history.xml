@@ -1,0 +1,16 @@
+<odoo>
+    <template id="report_loan_history">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="loan">
+                <div class="page">
+                    <h2>Informe de Historial de Préstamos</h2>
+                    <p><strong>Usuario:</strong> <t t-esc="loan.user_id.name"/></p>
+                    <p><strong>Libro:</strong> <t t-esc="loan.book_id.title"/></p>
+                    <p><strong>Fecha de Préstamo:</strong> <t t-esc="loan.loan_date"/></p>
+                    <p><strong>Fecha de Devolución:</strong> <t t-esc="loan.return_date"/></p>
+                    <p><strong>Estado:</strong> <t t-esc="loan.loan_status"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

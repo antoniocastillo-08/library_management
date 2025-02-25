@@ -13,7 +13,12 @@
         'views/users_view.xml',
         'views/loan_view.xml',
         'views/category_view.xml',
+        'report/report_books_available.xml',
+        'report/report_active_loans.xml',
+        'report/report_loan_history.xml',
+        'report/report_registered_users.xml',
         'views/menu.xml',
+
     ],
     'installable': True,
     'application': True,
