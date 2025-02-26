@@ -11,13 +11,66 @@
     <template id="report_active_loans">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="loan">
-                <div class="page">
-                    <h2>Informe de Préstamos Activos</h2>
-                    <p><strong>Usuario:</strong> <t t-esc="loan.user_id.full_name"/></p>
-                    <p><strong>Libro:</strong> <t t-esc="loan.book_id.title"/></p>
-                    <p><strong>Fecha de Préstamo:</strong> <t t-esc="loan.loan_date"/></p>
-                    <p><strong>Fecha de Devolución:</strong> <t t-esc="loan.return_date"/></p>
-                </div>
+                <t t-if="loan.loan_status == 'ongoing'">
+                    <style type="text/css">
+                        .page {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;         
+                        padding: 20px;
+                        border: 1px solid #ccc;
+                        }
+                        p{
+                        margin: 5px;
+                        color: #333;
+                        }
+                        tr, td{
+                        border: 1px solid #ccc;
+                        }
+                    </style>
+                       <div class="page">
+                       <table>
+                            <thead>
+                                <tr>
+                                <h2>Informe de Prestamos Activos</h2>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <p><strong>Usuario:</strong></p>
+                                </td>
+                                <td>
+                                    <p><t t-esc="loan.user_id.full_name"/></p>
+                                </td>
+                            </tr> 
+                            <tr>
+                                <td>
+                                    <p><strong>Libro:</strong></p>
+                                </td>
+                                <td>
+                                    <p><t t-esc="loan.book_id.title"/></p>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <p><strong>Fecha de Prestamo:</strong></p>
+                                </td>
+                                <td>
+                                    <p><t t-esc="loan.loan_date"/></p>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <p><strong>Fecha de Devolucion:</strong></p>
+                                </td>
+                                <td>
+                                    <p><t t-esc="loan.return_date"/></p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
             </t>
         </t>
     </template>

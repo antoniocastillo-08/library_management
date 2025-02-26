@@ -1,13 +1,71 @@
 <odoo>
+    <record id="action_report_books_available" model="ir.actions.report">
+        <field name="name">Informe de Libros Disponibles</field>
+        <field name="model">library.book</field>
+        <field name="report_name">library_management.report_books_available</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_library_book"/>
+        <field name="binding_type">report</field>
+    </record>
+
     <template id="report_books_available">
         <t t-call="web.html_container">
+            
             <t t-foreach="docs" t-as="book">
-                <div class="page">
-                    <h2>Informe de Libros Disponibles</h2>
-                    <p><strong>Título:</strong> <t t-esc="book.title"/></p>
-                    <p><strong>Autor:</strong> <t t-esc="book.author_id.name"/></p>
-                    <p><strong>Copias Disponibles:</strong> <t t-esc="book.available_copies"/></p>
-                </div>
+                <t t-if="book.available_copies > 0">
+                    <style type="text/css">
+                        .page {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;         
+                        padding: 20px;
+                        border: 1px solid #ccc;
+                        }
+                        p{
+                        margin: 5px;
+                        color: #333;
+                        }
+                        tr, td{
+                        border: 1px solid #ccc;
+                        }
+                    </style>
+                    <div class="page">
+                    <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                <h2>Informe de Libros Disponibles</h2>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p><strong>Titulo:</strong></p>
+                            </td>
+                            <td>
+                                <p><t t-esc="book.title"/></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p><strong>Autor:</strong></p>
+                            </td>
+                            <td>
+                                <p><t t-esc="book.author_id.name"/></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p><strong>Copias Disponibles:</strong></p>
+                            </td>
+                            <td>
+                                <p><t t-esc="book.available_copies"/></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                </t>
             </t>
         </t>
     </template>
